@@ -1,18 +1,17 @@
 node {
     stage('Checkout & Versioning') {
-        checkout scm                            // ✅ 1. Populate workspace first
+        checkout scm
 
-        def brain = load 'groovy/logic.groovy'  // ✅ 2. Now the file exists
+        def brain = load 'ci/groovy/logic.groovy'   // ✅ correct path
         def appVersion = ""
 
         appVersion = brain.generateVersion(env.BRANCH_NAME ?: "local")
         brain.logStage("VERSION: ${appVersion}")
-
-        env.APP_VERSION = appVersion            // ✅ Store in env so later stages can use it
+        env.APP_VERSION = appVersion
     }
 
     stage('Python Security Audit') {
-        sh "python3 scripts/auditor.py"
+        sh "python3 ci/scripts/auditor.py"           // ✅ correct path
     }
 
     stage('Docker Build') {
