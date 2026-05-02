@@ -1,3 +1,4 @@
+# scripts/auditor.py
 import sys
 
 

@@ -1,4 +1,4 @@
-// scripts/logic.groovy
+// groovy/logic.groovy
 
 def generateVersion(String branch) {
     def timestamp = new Date().format("yyyyMMdd-HHmm")

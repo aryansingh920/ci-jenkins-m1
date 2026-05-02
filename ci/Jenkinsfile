@@ -1,28 +1,26 @@
 node {
-    // LINE 1: Load our Groovy logic file into a variable named 'brain'
-    def brain = load 'groovy/logic.groovy'
-    def appVersion = ""
-
     stage('Checkout & Versioning') {
-        checkout scm
-        // LINE 2: Use the Groovy function to create a crazy-detailed version tag
+        checkout scm                            // ✅ 1. Populate workspace first
+
+        def brain = load 'groovy/logic.groovy'  // ✅ 2. Now the file exists
+        def appVersion = ""
+
         appVersion = brain.generateVersion(env.BRANCH_NAME ?: "local")
         brain.logStage("VERSION: ${appVersion}")
+
+        env.APP_VERSION = appVersion            // ✅ Store in env so later stages can use it
     }
 
     stage('Python Security Audit') {
-        // LINE 3: Call the Python script. If sys.exit(1), Jenkins stops here.
         sh "python3 scripts/auditor.py"
     }
 
     stage('Docker Build') {
-        // LINE 4: Use the variable derived from Groovy in the Docker command
-        sh "docker build -t fastapi-app:${appVersion} ."
+        sh "docker build -t fastapi-app:${env.APP_VERSION} ."
     }
 
     stage('Verification') {
-        // LINE 5: Run the container briefly to see if FastAPI actually boots
-        sh "docker run --rm fastapi-app:${appVersion} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
-        echo "Build ${appVersion} is verified and ready for the world."
+        sh "docker run --rm fastapi-app:${env.APP_VERSION} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
+        echo "Build ${env.APP_VERSION} is verified and ready for the world."
     }
 }
