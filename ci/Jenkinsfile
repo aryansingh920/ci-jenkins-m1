@@ -1,25 +1,53 @@
-node {
-    stage('Checkout & Versioning') {
-        checkout scm
+pipeline {
+    agent any
 
-        def brain = load 'ci/groovy/logic.groovy'   // ✅ correct path
-        def appVersion = ""
-
-        appVersion = brain.generateVersion(env.BRANCH_NAME ?: "local")
-        brain.logStage("VERSION: ${appVersion}")
-        env.APP_VERSION = appVersion
+    environment {
+        // We initialize this here, but we will update it in the first stage
+        APP_VERSION = ""
     }
 
-    stage('Python Security Audit') {
-        sh "python3 ci/scripts/auditor.py"           // ✅ correct path
+    stages {
+        stage('Checkout & Versioning') {
+            steps {
+                script {
+                    checkout scm
+                    // Load the external Groovy logic
+                    def brain = load 'ci/groovy/logic.groovy'
+                    
+                    // Generate version and update environment variable
+                    env.APP_VERSION = brain.generateVersion(env.BRANCH_NAME ?: "local")
+                    brain.logStage("VERSION: ${env.APP_VERSION}")
+                }
+            }
+        }
+
+        stage('Python Security Audit') {
+            steps {
+                // Running terminal commands via the 'sh' step
+                sh "python3 ci/scripts/auditor.py"
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh "docker build -f app/Dockerfile -t fastapi-app:${env.APP_VERSION} app/"
+            }
+        }
+
+        stage('Verification') {
+            steps {
+                sh "docker run --rm fastapi-app:${env.APP_VERSION} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
+                echo "Build ${env.APP_VERSION} is verified and ready for the world."
+            }
+        }
     }
 
-    stage('Docker Build') {
-        sh "docker build -f app/Dockerfile -t fastapi-app:${env.APP_VERSION} app/"
-    }
-
-    stage('Verification') {
-        sh "docker run --rm fastapi-app:${env.APP_VERSION} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
-        echo "Build ${env.APP_VERSION} is verified and ready for the world."
+    post {
+        always {
+            echo "Pipeline execution finished."
+        }
+        failure {
+            echo "The build or deployment failed. Check logs."
+        }
     }
 }
