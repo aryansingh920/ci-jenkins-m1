@@ -15,7 +15,7 @@ node {
     }
 
     stage('Docker Build') {
-        sh "docker build -t fastapi-app:${env.APP_VERSION} ."
+        sh "docker build -f app/Dockerfile -t fastapi-app:${env.APP_VERSION} app/"
     }
 
     stage('Verification') {
