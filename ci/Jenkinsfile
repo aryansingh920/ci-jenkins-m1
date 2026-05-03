@@ -1,28 +1,21 @@
 pipeline {
     agent any
 
-    environment {
-        // We initialize this here, but we will update it in the first stage
-        APP_VERSION = ""
-    }
-
     stages {
         stage('Checkout & Versioning') {
             steps {
                 script {
                     checkout scm
                     def brain = load 'ci/groovy/logic.groovy'
-                    
                     def version = brain.generateVersion(env.BRANCH_NAME ?: "local")
-                    env.APP_VERSION = version          // ✅ set directly, no pre-declaration
-                    brain.logStage("VERSION: ${env.APP_VERSION}")
+                    env.APP_VERSION = version
+                    brain.logStage("VERSION: ${version}")   // ✅ use local var, not env
                 }
             }
         }
 
         stage('Python Security Audit') {
             steps {
-                // Running terminal commands via the 'sh' step
                 sh "python3 ci/scripts/auditor.py"
             }
         }
@@ -42,11 +35,7 @@ pipeline {
     }
 
     post {
-        always {
-            echo "Pipeline execution finished."
-        }
-        failure {
-            echo "The build or deployment failed. Check logs."
-        }
+        always { echo "Pipeline execution finished." }
+        failure { echo "The build or deployment failed. Check logs." }
     }
 }
