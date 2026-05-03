@@ -3,19 +3,28 @@ import sys
 import json
 
 
+def run(cmd, **kwargs):
+    return subprocess.run(cmd, **kwargs)
+
+
 def scan_dependencies():
     print("=== Dependency Vulnerability Scan ===")
 
-    # python3 -m pip always works regardless of how pip is symlinked
-    subprocess.run(
-        ["python3", "-m", "pip", "install", "pip-audit", "--quiet"],
-        check=True
-    )
+    # Step 1: Install pip itself via apt (Jenkins container is Debian/Ubuntu based)
+    print("Installing pip via apt...")
+    run(["apt-get", "install", "-y", "-q", "python3-pip"], check=True)
 
-    result = subprocess.run(
+    # Step 2: Install pip-audit
+    print("Installing pip-audit...")
+    run(["python3", "-m", "pip", "install", "pip-audit",
+        "--quiet", "--break-system-packages"], check=True)
+
+    # Step 3: Run the scan
+    result = run(
         ["python3", "-m", "pip_audit",
          "--requirement", "app/requirements.txt",
-         "--format", "json", "--skip-editable"],
+         "--format", "json",
+         "--skip-editable"],
         capture_output=True,
         text=True
     )
