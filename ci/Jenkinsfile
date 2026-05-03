@@ -127,12 +127,39 @@ pipeline {
 
         stage('Publish Reports') {
             steps {
-                script {
-                    def brain = load 'ci/groovy/reports.groovy'
-                    brain.publishReports(
-                        env.APP_VERSION,
-                        '3dac82a1-43d7-4322-974d-fc524598b9a5'  // your existing Jenkins credential ID
-                    )
+                withCredentials([usernamePassword(
+                    credentialsId: '3dac82a1-43d7-4322-974d-fc524598b9a5',
+                    usernameVariable: 'GIT_USER',
+                    passwordVariable: 'GIT_TOKEN'
+                )]) {
+                    sh """
+                        git config --global user.email "jenkins@ci.local"
+                        git config --global user.name "Jenkins CI"
+
+                        # Clone the same repo into a temp folder
+                        rm -rf publish-tmp
+                        git clone https://\${GIT_USER}:\${GIT_TOKEN}@github.com/aryansingh920/ci-jenkins-m1.git publish-tmp
+
+                        # Create versioned reports directory
+                        mkdir -p publish-tmp/reports/${env.APP_VERSION}
+
+                        # Copy reports if they exist
+                        [ -f trivy-report.txt ] && cp trivy-report.txt publish-tmp/reports/${env.APP_VERSION}/ || true
+                        [ -f build-report.txt ] && cp build-report.txt publish-tmp/reports/${env.APP_VERSION}/ || true
+
+                        # Append to index
+                        echo "${env.APP_VERSION} - \$(date '+%Y-%m-%d %H:%M:%S')" >> publish-tmp/reports/index.txt
+
+                        # Commit and push
+                        cd publish-tmp
+                        git add reports/
+                        git diff --cached --quiet && echo "No new reports to publish." && exit 0
+                        git commit -m "ci: publish reports for ${env.APP_VERSION}"
+                        git push
+
+                        cd ..
+                        rm -rf publish-tmp
+                    """
                 }
             }
         }
