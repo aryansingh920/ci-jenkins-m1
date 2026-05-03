@@ -36,8 +36,8 @@ pipeline {
         stage('Unit Tests + Coverage') {
             steps {
                 sh """
-                    pip3 install -r app/requirements.txt --quiet
-                    pip3 install pytest pytest-cov --quiet
+                    python3 -m pip install -r app/requirements.txt --quiet
+                    python3 -m pip install pytest pytest-cov --quiet
                     cd app && python3 -m pytest test_main.py \
                         --cov=main \
                         --cov-report=term-missing \

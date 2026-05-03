@@ -6,14 +6,15 @@ import json
 def scan_dependencies():
     print("=== Dependency Vulnerability Scan ===")
 
-    # Use pip3 instead of pip
+    # python3 -m pip always works regardless of how pip is symlinked
     subprocess.run(
-        ["pip3", "install", "pip-audit", "--quiet"],
+        ["python3", "-m", "pip", "install", "pip-audit", "--quiet"],
         check=True
     )
 
     result = subprocess.run(
-        ["pip-audit", "--requirement", "app/requirements.txt",
+        ["python3", "-m", "pip_audit",
+         "--requirement", "app/requirements.txt",
          "--format", "json", "--skip-editable"],
         capture_output=True,
         text=True
