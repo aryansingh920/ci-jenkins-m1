@@ -1,0 +1,232 @@
+
+Report Summary
+
+┌──────────────────────────────────────────────────────────────────────────────────┬────────────┬─────────────────┬─────────┐
+│                                      Target                                      │    Type    │ Vulnerabilities │ Secrets │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ fastapi-app:local-20260503-2301-9a3a0b1 (alpine 3.23.4)                          │   alpine   │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/annotated_doc-0.0.4.dist-info/METADATA    │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/annotated_types-0.7.0.dist-info/METADATA  │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/anyio-4.13.0.dist-info/METADATA           │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/certifi-2026.4.22.dist-info/METADATA      │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/click-8.3.3.dist-info/METADATA            │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/fastapi-0.136.1.dist-info/METADATA        │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/h11-0.16.0.dist-info/METADATA             │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/httpcore-1.0.9.dist-info/METADATA         │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/httpx-0.28.1.dist-info/METADATA           │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/idna-3.13.dist-info/METADATA              │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/iniconfig-2.3.0.dist-info/METADATA        │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/packaging-26.2.dist-info/METADATA         │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pip-26.0.1.dist-info/METADATA             │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pluggy-1.6.0.dist-info/METADATA           │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pydantic-2.13.3.dist-info/METADATA        │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pydantic_core-2.46.3.dist-info/METADATA   │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pygments-2.20.0.dist-info/METADATA        │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/pytest-9.0.3.dist-info/METADATA           │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/starlette-1.0.0.dist-info/METADATA        │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/typing_extensions-4.15.0.dist-info/METAD- │ python-pkg │        0        │    -    │
+│ ATA                                                                              │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/typing_inspection-0.4.2.dist-info/METADA- │ python-pkg │        0        │    -    │
+│ TA                                                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.15/site-packages/uvicorn-0.46.0.dist-info/METADATA         │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/aut- │   cargo    │        0        │    -    │
+│ ocfg-1.3.0/Cargo.lock                                                            │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bas- │   cargo    │        0        │    -    │
+│ e64-0.22.1/Cargo.lock                                                            │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bit- │   cargo    │        0        │    -    │
+│ flags-2.9.1/Cargo.lock                                                           │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bit- │   cargo    │        0        │    -    │
+│ vec-1.0.1/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bum- │   cargo    │        0        │    -    │
+│ palo-3.19.0/Cargo.lock                                                           │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cc-- │   cargo    │        0        │    -    │
+│ 1.0.101/Cargo.lock                                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dis- │   cargo    │        0        │    -    │
+│ playdoc-0.2.5/Cargo.lock                                                         │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/equ- │   cargo    │        0        │    -    │
+│ ivalent-1.0.2/Cargo.lock                                                         │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fol- │   cargo    │        0        │    -    │
+│ dhash-0.2.0/Cargo.lock                                                           │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/for- │   cargo    │        0        │    -    │
+│ m_urlencoded-1.2.2/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/get- │   cargo    │        0        │    -    │
+│ random-0.3.3/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/has- │   cargo    │        0        │    -    │
+│ hbrown-0.16.1/Cargo.lock                                                         │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu- │   cargo    │        0        │    -    │
+│ _collections-1.5.0/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu- │   cargo    │        0        │    -    │
+│ _locid-1.5.0/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idn- │   cargo    │        0        │    -    │
+│ a-1.1.0/Cargo.lock                                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/jit- │   cargo    │        0        │    -    │
+│ er-0.14.0/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/js-- │   cargo    │        0        │    -    │
+│ sys-0.3.77/Cargo.lock                                                            │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lit- │   cargo    │        0        │    -    │
+│ emap-0.7.3/Cargo.lock                                                            │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/log- │   cargo    │        0        │    -    │
+│ -0.4.27/Cargo.lock                                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/onc- │   cargo    │        0        │    -    │
+│ e_cell-1.21.3/Cargo.lock                                                         │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/per- │   cargo    │        0        │    -    │
+│ cent-encoding-2.3.2/Cargo.lock                                                   │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo- │   cargo    │        0        │    -    │
+│ 3-0.28.3/Cargo.lock                                                              │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo- │   cargo    │        0        │    -    │
+│ 3-build-config-0.28.3/Cargo.lock                                                 │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo- │   cargo    │        0        │    -    │
+│ 3-ffi-0.28.3/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo- │   cargo    │        0        │    -    │
+│ 3-macros-0.28.3/Cargo.lock                                                       │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo- │   cargo    │        0        │    -    │
+│ 3-macros-backend-0.28.3/Cargo.lock                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyt- │   cargo    │        0        │    -    │
+│ hon3-dll-a-0.2.14/Cargo.lock                                                     │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quo- │   cargo    │        0        │    -    │
+│ te-1.0.44/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/r-e- │   cargo    │        0        │    -    │
+│ fi-5.2.0/Cargo.lock                                                              │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rad- │   cargo    │        0        │    -    │
+│ ium-0.7.0/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reg- │   cargo    │        0        │    -    │
+│ ex-1.12.3/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reg- │   cargo    │        0        │    -    │
+│ ex-automata-0.4.13/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ser- │   cargo    │        0        │    -    │
+│ de-1.0.228/Cargo.lock                                                            │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ser- │   cargo    │        0        │    -    │
+│ de_core-1.0.228/Cargo.lock                                                       │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ser- │   cargo    │        0        │    -    │
+│ de_derive-1.0.228/Cargo.lock                                                     │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ser- │   cargo    │        0        │    -    │
+│ de_json-1.0.149/Cargo.lock                                                       │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sma- │   cargo    │        0        │    -    │
+│ llvec-1.15.1/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spe- │   cargo    │        0        │    -    │
+│ edate-0.17.0/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/str- │   cargo    │        0        │    -    │
+│ um-0.27.2/Cargo.lock                                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/str- │   cargo    │        0        │    -    │
+│ um_macros-0.27.2/Cargo.lock                                                      │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tar- │   cargo    │        0        │    -    │
+│ get-lexicon-0.13.4/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url- │   cargo    │        0        │    -    │
+│ -2.5.8/Cargo.lock                                                                │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/uui- │   cargo    │        0        │    -    │
+│ d-1.23.0/Cargo.lock                                                              │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ i-0.14.2+wasi-0.2.4/Cargo.lock                                                   │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ m-bindgen-0.2.100/Cargo.lock                                                     │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ m-bindgen-backend-0.2.100/Cargo.lock                                             │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ m-bindgen-macro-0.2.100/Cargo.lock                                               │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ m-bindgen-macro-support-0.2.100/Cargo.lock                                       │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/was- │   cargo    │        0        │    -    │
+│ m-bindgen-shared-0.2.100/Cargo.lock                                              │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wit- │   cargo    │        0        │    -    │
+│ -bindgen-rt-0.39.0/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wri- │   cargo    │        0        │    -    │
+│ teable-0.5.5/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yok- │   cargo    │        0        │    -    │
+│ e-derive-0.7.4/Cargo.lock                                                        │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zer- │   cargo    │        0        │    -    │
+│ ocopy-0.8.25/Cargo.lock                                                          │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zer- │   cargo    │        0        │    -    │
+│ ocopy-derive-0.8.25/Cargo.lock                                                   │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zer- │   cargo    │        0        │    -    │
+│ ofrom-derive-0.1.4/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zer- │   cargo    │        0        │    -    │
+│ ovec-0.10.4/Cargo.lock                                                           │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zer- │   cargo    │        0        │    -    │
+│ ovec-derive-0.10.3/Cargo.lock                                                    │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ root/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zmi- │   cargo    │        0        │    -    │
+│ j-1.0.6/Cargo.lock                                                               │            │                 │         │
+└──────────────────────────────────────────────────────────────────────────────────┴────────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
