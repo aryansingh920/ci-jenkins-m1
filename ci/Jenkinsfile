@@ -33,11 +33,11 @@ pipeline {
             }
         }
 
-        stage('Unit Tests + Coverage') {         // 5. Tests with coverage gate (replaces plain test stage)
+        stage('Unit Tests + Coverage') {
             steps {
                 sh """
-                    pip install -r app/requirements.txt --quiet
-                    pip install pytest pytest-cov --quiet
+                    pip3 install -r app/requirements.txt --quiet
+                    pip3 install pytest pytest-cov --quiet
                     cd app && python3 -m pytest test_main.py \
                         --cov=main \
                         --cov-report=term-missing \

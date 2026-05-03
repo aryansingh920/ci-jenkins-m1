@@ -6,9 +6,9 @@ import json
 def scan_dependencies():
     print("=== Dependency Vulnerability Scan ===")
 
-    # Install pip-audit if not present
+    # Use pip3 instead of pip
     subprocess.run(
-        ["pip", "install", "pip-audit", "--quiet"],
+        ["pip3", "install", "pip-audit", "--quiet"],
         check=True
     )
 
@@ -33,9 +33,9 @@ def scan_dependencies():
         print(f"FOUND {len(vulns)} vulnerable package(s):")
         for dep in vulns:
             for v in dep["vulns"]:
-                severity = v.get("fix_versions", ["unfixed"])
+                fix = v.get("fix_versions", ["unfixed"])
                 print(
-                    f"  - {dep['name']} {dep['version']}: {v['id']} (fix: {severity})")
+                    f"  - {dep['name']} {dep['version']}: {v['id']} (fix: {fix})")
         sys.exit(1)
 
     except json.JSONDecodeError:
