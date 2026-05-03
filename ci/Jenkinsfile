@@ -24,12 +24,16 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 sh """
-                    apt-get install -y -q python3-pip python3-venv wget apt-transport-https gnupg
+                    apt-get install -y -q python3-pip python3-venv wget apt-transport-https gnupg curl
 
-                    # Install Trivy
-                    wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | apt-key add -
-                    echo "deb https://aquasecurity.github.io/trivy-repo/deb generic main" \
+                    # Install Trivy using modern keyring method (apt-key is removed in Debian trixie)
+                    curl -fsSL https://aquasecurity.github.io/trivy-repo/deb/public.key \
+                        | gpg --dearmor \
+                        | tee /usr/share/keyrings/trivy.gpg > /dev/null
+
+                    echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" \
                         > /etc/apt/sources.list.d/trivy.list
+
                     apt-get update -q
                     apt-get install -y -q trivy
 
