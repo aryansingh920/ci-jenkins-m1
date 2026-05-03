@@ -24,7 +24,16 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 sh """
-                    apt-get install -y -q python3-pip python3-venv
+                    apt-get install -y -q python3-pip python3-venv wget apt-transport-https gnupg
+
+                    # Install Trivy
+                    wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | apt-key add -
+                    echo "deb https://aquasecurity.github.io/trivy-repo/deb generic main" \
+                        > /etc/apt/sources.list.d/trivy.list
+                    apt-get update -q
+                    apt-get install -y -q trivy
+
+                    # Install Python deps
                     python3 -m pip install --quiet --break-system-packages \
                         -r app/requirements.txt \
                         pip-audit pytest pytest-cov httpx
@@ -58,13 +67,39 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {                  // 6. Only build if all checks pass
+        stage('Docker Build') {
             steps {
                 sh "docker build -f app/Dockerfile -t fastapi-app:${env.APP_VERSION} app/"
             }
         }
 
-        stage('Verification') {                  // 7. Prove the image actually works
+        stage('Trivy Image Scan') {
+            steps {
+                sh """
+                    trivy image \
+                        --exit-code 0 \
+                        --severity HIGH,CRITICAL \
+                        --no-progress \
+                        --format table \
+                        --output trivy-report.txt \
+                        fastapi-app:${env.APP_VERSION}
+
+                    echo "=== Trivy Summary ==="
+                    cat trivy-report.txt
+
+                    # Now fail if CRITICAL vulns found
+                    trivy image \
+                        --exit-code 1 \
+                        --severity CRITICAL \
+                        --no-progress \
+                        --quiet \
+                        fastapi-app:${env.APP_VERSION}
+                """
+                archiveArtifacts artifacts: 'trivy-report.txt'
+            }
+        }
+
+        stage('Verification') {
             steps {
                 sh "docker run --rm fastapi-app:${env.APP_VERSION} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
                 echo "Build ${env.APP_VERSION} is verified and ready for the world."
