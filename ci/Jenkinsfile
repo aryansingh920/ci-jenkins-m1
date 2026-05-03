@@ -2,36 +2,79 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout & Versioning') {
+
+        stage('Checkout & Versioning') {         // 1. Always first
             steps {
                 script {
                     checkout scm
                     def brain = load 'ci/groovy/logic.groovy'
                     def version = brain.generateVersion(env.BRANCH_NAME ?: "local")
                     env.APP_VERSION = version
-                    brain.logStage("VERSION: ${version}")   // ✅ use local var, not env
+                    brain.logStage("VERSION: ${version}")
                 }
             }
         }
 
-        stage('Python Security Audit') {
+        stage('Pre-flight') {                    // 2. Environment sanity check
+            steps {
+                sh "chmod +x ci/scripts/preflight.sh && ci/scripts/preflight.sh"
+            }
+        }
+
+        stage('Python Security Audit') {         // 3. Static file audit (fast, no installs)
             steps {
                 sh "python3 ci/scripts/auditor.py"
             }
         }
 
-        stage('Docker Build') {
+        stage('Dependency Scan') {               // 4. CVE scan (installs pip-audit)
+            steps {
+                sh "python3 ci/scripts/dep_scanner.py"
+            }
+        }
+
+        stage('Unit Tests + Coverage') {         // 5. Tests with coverage gate (replaces plain test stage)
+            steps {
+                sh """
+                    pip install -r app/requirements.txt --quiet
+                    pip install pytest pytest-cov --quiet
+                    cd app && python3 -m pytest test_main.py \
+                        --cov=main \
+                        --cov-report=term-missing \
+                        --cov-fail-under=80 \
+                        -v
+                """
+            }
+        }
+
+        stage('Docker Build') {                  // 6. Only build if all checks pass
             steps {
                 sh "docker build -f app/Dockerfile -t fastapi-app:${env.APP_VERSION} app/"
             }
         }
 
-        stage('Verification') {
+        stage('Verification') {                  // 7. Prove the image actually works
             steps {
                 sh "docker run --rm fastapi-app:${env.APP_VERSION} python3 -c 'import fastapi; print(\"FastAPI Ready\")'"
                 echo "Build ${env.APP_VERSION} is verified and ready for the world."
             }
         }
+
+        stage('Build Report') {                  // 8. Last — summarise what actually happened
+            steps {
+                script {
+                    def brain = load 'ci/groovy/logic.groovy'
+                    brain.generateReport(
+                        env.APP_VERSION,
+                        env.BRANCH_NAME ?: "local",
+                        true,
+                        true
+                    )
+                    archiveArtifacts artifacts: 'build-report.txt'
+                }
+            }
+        }
+
     }
 
     post {
