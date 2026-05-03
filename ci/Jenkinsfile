@@ -25,7 +25,9 @@ pipeline {
             steps {
                 sh """
                     apt-get install -y -q python3-pip python3-venv
-                    python3 -m pip install pip-audit pytest pytest-cov --quiet --break-system-packages
+                    python3 -m pip install --quiet --break-system-packages \
+                        -r app/requirements.txt \
+                        pip-audit pytest pytest-cov httpx
                 """
             }
         }
