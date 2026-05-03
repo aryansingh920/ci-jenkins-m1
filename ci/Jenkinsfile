@@ -11,11 +11,10 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    // Load the external Groovy logic
                     def brain = load 'ci/groovy/logic.groovy'
                     
-                    // Generate version and update environment variable
-                    env.APP_VERSION = brain.generateVersion(env.BRANCH_NAME ?: "local")
+                    def version = brain.generateVersion(env.BRANCH_NAME ?: "local")
+                    env.APP_VERSION = version          // ✅ set directly, no pre-declaration
                     brain.logStage("VERSION: ${env.APP_VERSION}")
                 }
             }
