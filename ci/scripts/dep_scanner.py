@@ -3,24 +3,11 @@ import sys
 import json
 
 
-def run(cmd, **kwargs):
-    return subprocess.run(cmd, **kwargs)
-
-
 def scan_dependencies():
     print("=== Dependency Vulnerability Scan ===")
 
-    # Step 1: Install pip itself via apt (Jenkins container is Debian/Ubuntu based)
-    print("Installing pip via apt...")
-    run(["apt-get", "install", "-y", "-q", "python3-pip"], check=True)
-
-    # Step 2: Install pip-audit
-    print("Installing pip-audit...")
-    run(["python3", "-m", "pip", "install", "pip-audit",
-        "--quiet", "--break-system-packages"], check=True)
-
-    # Step 3: Run the scan
-    result = run(
+    # pip-audit is already installed by the Setup stage — just run it
+    result = subprocess.run(
         ["python3", "-m", "pip_audit",
          "--requirement", "app/requirements.txt",
          "--format", "json",

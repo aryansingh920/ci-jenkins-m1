@@ -21,11 +21,22 @@ pipeline {
             }
         }
 
+        stage('Setup Python Environment') {
+            steps {
+                sh """
+                    apt-get install -y -q python3-pip python3-venv
+                    python3 -m pip install pip-audit pytest pytest-cov --quiet --break-system-packages
+                """
+            }
+        }
+
         stage('Python Security Audit') {         // 3. Static file audit (fast, no installs)
             steps {
                 sh "python3 ci/scripts/auditor.py"
             }
         }
+
+        
 
         stage('Dependency Scan') {               // 4. CVE scan (installs pip-audit)
             steps {
@@ -36,9 +47,6 @@ pipeline {
         stage('Unit Tests + Coverage') {
             steps {
                 sh """
-                    apt-get install -y -q python3-pip
-                    python3 -m pip install -r app/requirements.txt --quiet --break-system-packages
-                    python3 -m pip install pytest pytest-cov --quiet --break-system-packages
                     cd app && python3 -m pytest test_main.py \
                         --cov=main \
                         --cov-report=term-missing \
