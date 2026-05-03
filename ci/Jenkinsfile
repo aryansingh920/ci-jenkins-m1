@@ -128,7 +128,7 @@ pipeline {
         stage('Publish Reports') {
             steps {
                 script {
-                    def brain = load 'ci/groovy/logic.groovy'
+                    def brain = load 'ci/groovy/reports.groovy'
                     brain.publishReports(
                         env.APP_VERSION,
                         '3dac82a1-43d7-4322-974d-fc524598b9a5'  // your existing Jenkins credential ID
