@@ -113,7 +113,7 @@ pipeline {
         stage('Build Report') {                  // 8. Last — summarise what actually happened
             steps {
                 script {
-                    def brain = load 'ci/groovy/logic.groovy'
+                    def brain = load 'ci/groovy/reports.groovy'
                     brain.generateReport(
                         env.APP_VERSION,
                         env.BRANCH_NAME ?: "local",
@@ -121,6 +121,19 @@ pipeline {
                         true
                     )
                     archiveArtifacts artifacts: 'build-report.txt'
+                }
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                script {
+                    def brain = load 'ci/groovy/reports.groovy'
+                    brain.publishReports(
+                        'https://github.com/YOUR_USERNAME/YOUR_REPORTS_REPO.git',
+                        'your-jenkins-credential-id',   // the credential ID you set up in Jenkins
+                        env.APP_VERSION
+                    )
                 }
             }
         }
