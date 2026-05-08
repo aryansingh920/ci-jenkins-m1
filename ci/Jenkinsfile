@@ -51,7 +51,6 @@ pipeline {
             }
         }
 
-        
 
         stage('Dependency Scan') {               // 4. CVE scan (installs pip-audit)
             steps {

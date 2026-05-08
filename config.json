@@ -1,0 +1,6 @@
+{
+  "schema": "http://json.schemastore.org/babelrc",
+  "port": 8080,
+  "label": "docker-agent",
+  "timeout": 10
+}
