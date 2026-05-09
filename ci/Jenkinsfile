@@ -1,3 +1,4 @@
+/* groovylint-disable LineLength */
 pipeline {
     agent any
 
@@ -8,7 +9,7 @@ pipeline {
                 script {
                     checkout scm
                     def brain = load 'ci/groovy/logic.groovy'
-                    def version = brain.generateVersion(env.BRANCH_NAME ?: "local")
+                    def version = brain.generateVersion(env.BRANCH_NAME ?: 'local')
                     env.APP_VERSION = version
                     brain.logStage("VERSION: ${version}")
                 }
@@ -17,13 +18,13 @@ pipeline {
 
         stage('Pre-flight') {                    // 2. Environment sanity check
             steps {
-                sh "chmod +x ci/scripts/preflight.sh && ci/scripts/preflight.sh"
+                sh 'chmod +x ci/scripts/preflight.sh && ci/scripts/preflight.sh'
             }
         }
 
         stage('Setup Python Environment') {
             steps {
-                sh """
+                sh '''
                     apt-get install -y -q python3-pip python3-venv wget apt-transport-https gnupg curl
 
                     # Install Trivy using modern keyring method (apt-key is removed in Debian trixie)
@@ -41,32 +42,31 @@ pipeline {
                     python3 -m pip install --quiet --break-system-packages \
                         -r app/requirements.txt \
                         pip-audit pytest pytest-cov httpx
-                """
+                '''
             }
         }
 
         stage('Python Security Audit') {         // 3. Static file audit (fast, no installs)
             steps {
-                sh "python3 ci/scripts/auditor.py"
+                sh 'python3 ci/scripts/auditor.py'
             }
         }
 
-
         stage('Dependency Scan') {               // 4. CVE scan (installs pip-audit)
             steps {
-                sh "python3 ci/scripts/dep_scanner.py"
+                sh 'python3 ci/scripts/dep_scanner.py'
             }
         }
 
         stage('Unit Tests + Coverage') {
             steps {
-                sh """
+                sh '''
                     cd app && python3 -m pytest test_main.py \
                         --cov=main \
                         --cov-report=term-missing \
                         --cov-fail-under=80 \
                         -v
-                """
+                '''
             }
         }
 
@@ -115,7 +115,7 @@ pipeline {
                     def brain = load 'ci/groovy/reports.groovy'
                     brain.generateReport(
                         env.APP_VERSION,
-                        env.BRANCH_NAME ?: "local",
+                        env.BRANCH_NAME ?: 'local',
                         true,
                         true
                     )
@@ -166,7 +166,7 @@ pipeline {
     }
 
     post {
-        always { echo "Pipeline execution finished." }
-        failure { echo "The build or deployment failed. Check logs." }
+        always { echo 'Pipeline execution finished.' }
+        failure { echo 'The build or deployment failed. Check logs.' }
     }
 }

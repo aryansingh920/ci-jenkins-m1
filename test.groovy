@@ -85,3 +85,5 @@ deployments.each { dep ->
         println "Starting singleton service: ${dep.name}"
     }
 }
+
+println new Date().format("yyyyMMdd-HHmm")
